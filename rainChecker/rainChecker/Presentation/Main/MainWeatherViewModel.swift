@@ -17,6 +17,10 @@ class MainWeatherViewModel: ObservableObject {
 }
 
 extension MainWeatherViewModel {
+    func requestLocationAuthorization() {
+        LocationManager.shared.requestAuthorization()
+    }
+    
     func getCurrentWeather() async {
         isLoading = true
         let result = await WeatherManager.shared.getCurrentWeather(location: currentLocation)

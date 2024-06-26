@@ -10,10 +10,14 @@ import WeatherKit
 import Combine
 import CoreLocation
 
-class WeatherManager {
+final class WeatherManager {
     public static let shared = WeatherManager()
     
     private let weatherService = WeatherService()
+    
+    private init() {
+        
+    }
     
     func getCurrentWeather(location: CLLocation) async -> Result<CurrentWeatherModel, Error> {
         do {

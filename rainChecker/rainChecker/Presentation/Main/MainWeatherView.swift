@@ -29,8 +29,15 @@ struct MainWeatherView: View {
                 LottieView(animation: .named("clear-day"))
                     .looping()
                 Text("\(Date.now.formatted(date: .abbreviated, time: .shortened))")
+                
                 Text("\(viewModel.currentWeatherModel.actualTemperature)")
                 Text("\(viewModel.currentWeatherModel.humidity)")
+                Button {
+                    viewModel.requestLocationAuthorization()
+                } label: {
+                    Text("get locaiton")
+                }
+
                 Text("\(viewModel.currentWeatherModel.isRaining ? "Raining!" : "Not Raining!")")
             }
         }
@@ -40,4 +47,13 @@ struct MainWeatherView: View {
             }
         }
     }
+}
+
+enum rainStatus: Double {
+    case raining = 100
+    case willRain
+    case mayRain = 50
+    case mightRain = 30
+    case couldRain = 10
+    case notRain = 0.0
 }
