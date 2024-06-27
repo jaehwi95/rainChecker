@@ -15,6 +15,7 @@ struct CurrentWeatherModel {
     let weather: WeatherCondition
     let symbolName: String
     let isRaining: Bool
+    let precipitationPercentage: Double
     
     init() {
         self.feelsLikeTemperature = 0.0
@@ -23,6 +24,7 @@ struct CurrentWeatherModel {
         self.weather = .clear
         self.symbolName = ""
         self.isRaining = false
+        self.precipitationPercentage = 0.0
     }
     
     init(
@@ -30,7 +32,8 @@ struct CurrentWeatherModel {
         actualTemperature: Double,
         humidity: Double,
         weather: WeatherCondition,
-        symbolName: String
+        symbolName: String,
+        precipitationPercentage: Double
     ) {
         self.feelsLikeTemperature = feelsLikeTemperature
         self.actualTemperature = actualTemperature
@@ -44,5 +47,6 @@ struct CurrentWeatherModel {
         default:
             self.isRaining = false
         }
+        self.precipitationPercentage = precipitationPercentage
     }
 }

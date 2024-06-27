@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1933C2252C2DD20900EF5C29 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933C2242C2DD20900EF5C29 /* View+.swift */; };
+		1933C2272C2DD80700EF5C29 /* Acme-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1933C2262C2DD80700EF5C29 /* Acme-Regular.ttf */; };
+		1933C2292C2DD92D00EF5C29 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933C2282C2DD92D00EF5C29 /* Font+.swift */; };
 		1953D2732C1B38A300D979DE /* CLLocation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1953D2722C1B38A300D979DE /* CLLocation+.swift */; };
 		1953D2782C1B4F0700D979DE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1953D2772C1B4F0700D979DE /* HomeView.swift */; };
 		1953D27A2C1B4F1100D979DE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1953D2792C1B4F1100D979DE /* HomeViewModel.swift */; };
@@ -34,6 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1933C2242C2DD20900EF5C29 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		1933C2262C2DD80700EF5C29 /* Acme-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Acme-Regular.ttf"; sourceTree = "<group>"; };
+		1933C2282C2DD92D00EF5C29 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		1953D2722C1B38A300D979DE /* CLLocation+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+.swift"; sourceTree = "<group>"; };
 		1953D2772C1B4F0700D979DE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1953D2792C1B4F1100D979DE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -74,10 +80,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1933C2232C2DCEDA00EF5C29 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		1953D26F2C1B387800D979DE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				1953D2722C1B38A300D979DE /* CLLocation+.swift */,
+				1933C2242C2DD20900EF5C29 /* View+.swift */,
+				1933C2282C2DD92D00EF5C29 /* Font+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -85,6 +100,7 @@
 		1953D2742C1B3FE100D979DE /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				1933C2262C2DD80700EF5C29 /* Acme-Regular.ttf */,
 				1953D29F2C1CD10F00D979DE /* Info.plist */,
 				1953D28C2C1B891200D979DE /* clear-day.json */,
 				1953D28E2C1B8D4A00D979DE /* clear-night.json */,
@@ -165,6 +181,7 @@
 		197F52C22C19B32700AB786C /* rainChecker */ = {
 			isa = PBXGroup;
 			children = (
+				1933C2232C2DCEDA00EF5C29 /* Views */,
 				1953D2752C1B3FFD00D979DE /* Presentation */,
 				1953D2742C1B3FE100D979DE /* Assets */,
 				1953D26F2C1B387800D979DE /* Extensions */,
@@ -274,6 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1933C2272C2DD80700EF5C29 /* Acme-Regular.ttf in Resources */,
 				1953D28D2C1B891200D979DE /* clear-day.json in Resources */,
 				197F52CB2C19B32800AB786C /* Preview Assets.xcassets in Resources */,
 				1953D2952C1B8D4A00D979DE /* partly-cloudy-day-rain.json in Resources */,
@@ -298,7 +316,9 @@
 				1953D27A2C1B4F1100D979DE /* HomeViewModel.swift in Sources */,
 				1953D27F2C1B500C00D979DE /* ChartViewModel.swift in Sources */,
 				197F52C42C19B32700AB786C /* rainCheckerApp.swift in Sources */,
+				1933C2252C2DD20900EF5C29 /* View+.swift in Sources */,
 				1953D27D2C1B500500D979DE /* ChartView.swift in Sources */,
+				1933C2292C2DD92D00EF5C29 /* Font+.swift in Sources */,
 				197F52D92C19B54A00AB786C /* Router.swift in Sources */,
 				1953D2732C1B38A300D979DE /* CLLocation+.swift in Sources */,
 				197F52DB2C19B55100AB786C /* RouterView.swift in Sources */,
