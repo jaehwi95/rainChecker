@@ -15,9 +15,7 @@ final class WeatherManager {
     
     private let weatherService = WeatherService()
     
-    private init() {
-        
-    }
+    private init() {}
     
     func getCurrentWeather(location: CLLocation) async -> Result<CurrentWeatherModel, Error> {
         do {
@@ -27,8 +25,7 @@ final class WeatherManager {
                 actualTemperature: currentWeather.temperature.value,
                 humidity: currentWeather.humidity,
                 weather: currentWeather.condition,
-                symbolName: currentWeather.symbolName,
-                precipitationPercentage: 0.0
+                symbolName: currentWeather.symbolName
             )
             return .success(currentWeatherModel)
         } catch {
@@ -47,9 +44,14 @@ final class WeatherManager {
         }
     }
     
-    func getWeather(location: CLLocation) async -> Result<Weather, Error> {
+    func getTodayForecast(location: CLLocation) async -> Result<Weather, Error> {
         do {
             let weather = try await weatherService.weather(for: location)
+//            if let dailyForecast = weather.dailyForecast {
+//                if let today = dailyForecast.forecast.first {
+//                    
+//                }
+//            }
             return .success(weather)
         } catch {
             return .failure(error)

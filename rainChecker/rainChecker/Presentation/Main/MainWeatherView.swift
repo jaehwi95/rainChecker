@@ -23,20 +23,19 @@ struct MainWeatherView: View {
             .ignoresSafeArea()
             ScrollView {
                 VStack {
+                    HStack {
+                        Image(systemName: "location.circle")
+                        Text("\(viewModel.currentLocationString)")
+                    }
                     VStack {
-                        Text("33%").font(.system(size: 80))
+                        Text("33%")
+                            .font(.acmeRegular80)
                         Text("Chance of Rain")
                             .font(.acmeRegular28)
-                            .fontWeight(.bold)
                             .padding(.leading, 40)
                     }
                     LottieView(animation: .named("clear-day"))
                         .looping()
-                    HStack {
-                        Image(systemName: "location.circle")
-                        Text("Seoul, Korea")
-                        Text("\(viewModel.currentWeatherModel.actualTemperature)")
-                    }
                     Text("Today's precipitation overview")
                     HStack {
                         ForEach(0..<3) { value in
@@ -55,9 +54,11 @@ struct MainWeatherView: View {
                     }
                     Text("\(viewModel.currentWeatherModel.humidity)")
                     Button {
-                        viewModel.requestLocationAuthorization()
+                        Task {
+                            await viewModel.getCurrentLocation()
+                        }
                     } label: {
-                        Text("get locaiton")
+                        Text("get location")
                     }
 
                     Text("\(viewModel.currentWeatherModel.isRaining ? "Raining!" : "Not Raining!")")
@@ -65,11 +66,6 @@ struct MainWeatherView: View {
             }
         }
         .onAppear {
-            for fontFamily in UIFont.familyNames {
-                for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
-                    print(fontName)
-                }
-            }
             Task {
                 await viewModel.getCurrentWeather()
             }

@@ -12,13 +12,21 @@ import CoreLocation
 @MainActor
 class MainWeatherViewModel: ObservableObject {
     @Published var isLoading: Bool = false
-    let currentLocation: CLLocation = CLLocation.seoul
+    var currentLocation: CLLocation = CLLocation.seoul
     @Published var currentWeatherModel: CurrentWeatherModel = .init()
+    @Published var currentLocationString: String = ""
 }
 
 extension MainWeatherViewModel {
-    func requestLocationAuthorization() {
-        LocationManager.shared.requestAuthorization()
+    func getCurrentLocation() async {
+        let result = await LocationManager.shared.fetchCityCountry()
+        switch result {
+        case .success(let data):
+            print("jaebi: \(data)")
+            currentLocationString = "\(data.city), \(data.country)"
+        case .failure(let failure):
+            print("Error: \(failure)")
+        }
     }
     
     func getCurrentWeather() async {
@@ -26,6 +34,7 @@ extension MainWeatherViewModel {
         let result = await WeatherManager.shared.getCurrentWeather(location: currentLocation)
         switch result {
         case .success(let data):
+            print("jaebi: \(data)")
             currentWeatherModel = data
         case .failure(let failure):
             print("Error: \(failure)")
@@ -34,7 +43,8 @@ extension MainWeatherViewModel {
     }
     
     func getTodayPrecipitationPercentage() async {
-        
+        isLoading = true
+//        let result = await WeatherManager
     }
     
     func getTemperaturePrecipitationChange() async {
@@ -43,13 +53,13 @@ extension MainWeatherViewModel {
     
     func getWeather() async {
         isLoading = true
-        let result = await WeatherManager.shared.getWeather(location: currentLocation)
-        switch result {
-        case .success(let weatherData):
-            print("\(weatherData)")
-        case .failure(let failure):
-            print("Error: \(failure)")
-        }
+//        let result = await WeatherManager.shared.getWeather(location: currentLocation)
+//        switch result {
+//        case .success(let weatherData):
+//            print("\(weatherData)")
+//        case .failure(let failure):
+//            print("Error: \(failure)")
+//        }
         isLoading = false
     }
 }

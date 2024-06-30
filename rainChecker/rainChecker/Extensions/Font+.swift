@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 extension Font {
-    // Bold
+    static let acmeRegular80: Font = .custom("Acme-Regular", size: 80)
     static let acmeRegular28: Font = .custom("Acme-Regular", size: 28)
     
     // SemiBold

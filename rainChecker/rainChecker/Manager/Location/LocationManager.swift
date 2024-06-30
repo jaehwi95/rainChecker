@@ -11,7 +11,7 @@ import CoreLocation
 final class LocationManager: NSObject, CLLocationManagerDelegate {
     public static let shared = LocationManager()
     private let locationManager = CLLocationManager()
-    var currentLocation: CLLocationCoordinate2D?
+    var currentLocation: CLLocation?
     
     private override init() {
         super.init()
@@ -22,6 +22,29 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     
     func requestAuthorization() {
         self.locationManager.requestWhenInUseAuthorization()
+    }
+    
+    func fetchCityCountry() async -> Result<(city: String, country: String), LocationError> {
+        do {
+            switch locationManager.authorizationStatus {
+            case .authorizedAlways, .authorizedWhenInUse, .authorized:
+                guard let location = currentLocation else {
+                    return .failure(.invalidCurrentLocation)
+                }
+                let placeMarks: [CLPlacemark] = try await CLGeocoder().reverseGeocodeLocation(location)
+                guard let city = placeMarks.first?.locality else {
+                    return .failure(.invalidCity)
+                }
+                guard let country = placeMarks.first?.country else {
+                    return .failure(.invalidCountry)
+                }
+                return .success((city, country))
+            default:
+                return .failure(.notAuthorized)
+            }
+        } catch {
+            return .failure(.failFetchCityCountry)
+        }
     }
 }
 
@@ -47,6 +70,7 @@ extension LocationManager {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        currentLocation = locations.first?.coordinate
+        currentLocation = locations.first
     }
 }
+

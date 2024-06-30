@@ -9,22 +9,20 @@ import Foundation
 import WeatherKit
 
 struct CurrentWeatherModel {
-    let feelsLikeTemperature: Double
-    let actualTemperature: Double
+    let feelsLikeTemperature: Int
+    let actualTemperature: Int
     let humidity: Double
     let weather: WeatherCondition
     let symbolName: String
     let isRaining: Bool
-    let precipitationPercentage: Double
     
     init() {
-        self.feelsLikeTemperature = 0.0
-        self.actualTemperature = 0.0
+        self.feelsLikeTemperature = 0
+        self.actualTemperature = 0
         self.humidity = 0.0
         self.weather = .clear
         self.symbolName = ""
         self.isRaining = false
-        self.precipitationPercentage = 0.0
     }
     
     init(
@@ -32,11 +30,10 @@ struct CurrentWeatherModel {
         actualTemperature: Double,
         humidity: Double,
         weather: WeatherCondition,
-        symbolName: String,
-        precipitationPercentage: Double
+        symbolName: String
     ) {
-        self.feelsLikeTemperature = feelsLikeTemperature
-        self.actualTemperature = actualTemperature
+        self.feelsLikeTemperature = feelsLikeTemperature.toInt() ?? 0
+        self.actualTemperature = actualTemperature.toInt() ?? 0
         self.humidity = humidity
         self.weather = weather
         self.symbolName = symbolName
@@ -47,6 +44,27 @@ struct CurrentWeatherModel {
         default:
             self.isRaining = false
         }
-        self.precipitationPercentage = precipitationPercentage
+    }
+}
+
+struct TodayForecastModel {
+    let highTemperature: Double
+    let lowTemperature: Double
+    let highTemperatureTime: Date
+    let lowTemperatureTime: Date
+    let isRain: Bool
+    let precipitationChance: Double
+    let startTime: Date
+    let symbolName: String
+    
+    init() {
+        self.highTemperature = 0.0
+        self.lowTemperature = 0.0
+        self.highTemperatureTime = .now
+        self.lowTemperatureTime = .now
+        self.isRain = false
+        self.precipitationChance = 0.0
+        self.startTime = .now
+        self.symbolName = ""
     }
 }
