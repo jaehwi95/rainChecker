@@ -10,10 +10,12 @@ import WeatherKit
 import Combine
 import CoreLocation
 
-class WeatherManager {
+final class WeatherManager {
     public static let shared = WeatherManager()
     
     private let weatherService = WeatherService()
+    
+    private init() {}
     
     func getCurrentWeather(location: CLLocation) async -> Result<CurrentWeatherModel, Error> {
         do {
@@ -42,9 +44,14 @@ class WeatherManager {
         }
     }
     
-    func getWeather(location: CLLocation) async -> Result<Weather, Error> {
+    func getTodayForecast(location: CLLocation) async -> Result<Weather, Error> {
         do {
             let weather = try await weatherService.weather(for: location)
+//            if let dailyForecast = weather.dailyForecast {
+//                if let today = dailyForecast.forecast.first {
+//                    
+//                }
+//            }
             return .success(weather)
         } catch {
             return .failure(error)

@@ -15,15 +15,21 @@ struct HomeView: View {
     var body: some View {
         TabView {
             MainWeatherView(viewModel: .init())
+                // sets visibility for background of tabbar
+                .toolbarBackgroundVisibility(.visible, for: .tabBar)
                 .tabItem {
-                    Image(systemName: "cloud.sun.rain.fill")
+                    Label("Weather", systemImage: "cloud.sun.rain.fill")
                 }
                 .tag(0)
             ChartView(viewModel: .init())
                 .tabItem {
-                    Image(systemName: "chart.bar.xaxis")
+                    Label("Chart", systemImage: "chart.bar.xaxis")
                 }
                 .tag(1)
+        }
+        .onAppear {
+            UITabBar.appearance().barTintColor = .white
+            viewModel.requestLocationAuthorization()
         }
     }
 }

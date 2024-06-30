@@ -12,6 +12,8 @@ class HomeViewModel: ObservableObject {
     
 }
 
-extension MainWeatherViewModel {
-    
+extension HomeViewModel {
+    func requestLocationAuthorization() {
+        LocationManager.shared.requestAuthorization()
+    }
 }
