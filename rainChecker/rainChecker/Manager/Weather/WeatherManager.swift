@@ -33,11 +33,11 @@ final class WeatherManager {
         }
     }
     
-    func getHourlyPrecipitation(location: CLLocation) async -> Result<[Measurement<UnitLength>], Error> {
+    func getHourlyPrecipitation(location: CLLocation) async -> Result<[Double], Error> {
         do {
             let hourlyPrecipitation = try await weatherService
-                .weather(for: location, including: .hourly)
-                .map(\.precipitationAmount)
+                .weather(for: location, including: .daily)
+                .map(\.precipitationChance)
             return .success(hourlyPrecipitation)
         } catch {
             return .failure(error)

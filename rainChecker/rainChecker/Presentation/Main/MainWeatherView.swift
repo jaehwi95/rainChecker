@@ -28,7 +28,7 @@ struct MainWeatherView: View {
                         Text("\(viewModel.currentLocationString)")
                     }
                     VStack {
-                        Text("33%")
+                        Text("\(viewModel.todayRainPercentage)")
                             .font(.acmeRegular80)
                         HStack {
                             Spacer()
@@ -71,7 +71,12 @@ struct MainWeatherView: View {
         }
         .onChange(of: viewModel.authorizationStatus) { _, newValue in
             Task {
-                await viewModel.getCurrentLocation()
+                await withTaskGroup(of: Void.self) { group in
+                    group.addTask { await viewModel.getCurrentWeather() }
+                    group.addTask { await viewModel.getCurrentLocation() }
+                    group.addTask { await viewModel.getTodayPrecipitationPercentage() }
+                    await group.waitForAll()
+                }
             }
         }
     }

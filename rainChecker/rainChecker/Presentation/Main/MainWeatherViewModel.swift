@@ -14,17 +14,14 @@ class MainWeatherViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     
     private let locationManager = LocationManager.shared
-    
-    var currentLocation: CLLocation {
-        locationManager.currentLocation ?? .seoul
-    }
+    var currentLocation: CLLocation { locationManager.currentLocation ?? .seoul }
     @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
     private var task: Task<Void, Never>? = nil
-    
     @Published var currentLocationString: String = ""
     
     @Published var currentWeatherModel: CurrentWeatherModel = .init()
     @Published var todayPrecipitationModel: TodayPrecipitationModel = .init()
+    @Published var todayRainPercentage: String = ""
     
     init() {
         task = Task {
@@ -82,10 +79,9 @@ extension MainWeatherViewModel {
 }
 
 extension MainWeatherViewModel {
-    
     func getCurrentWeather() async {
         isLoading = true
-        let result = await WeatherManager.shared.getCurrentWeather(location: currentLocation ?? .seoul)
+        let result = await WeatherManager.shared.getCurrentWeather(location: currentLocation)
         switch result {
         case .success(let data):
             print("jaebi: current weather \(data)")
@@ -98,11 +94,10 @@ extension MainWeatherViewModel {
     
     func getTodayPrecipitationPercentage() async {
         isLoading = true
-        let result = await WeatherManager.shared.getHourlyPrecipitation(location: currentLocation ?? .seoul)
+        let result = await WeatherManager.shared.getHourlyPrecipitation(location: currentLocation)
         switch result {
         case .success(let data):
-//            print("jaebi: today precipiation \(data)")
-            print("")
+            todayRainPercentage = data.first?.toPercentage() ?? ""
         case .failure(let failure):
             print("Error: \(failure)")
         }
