@@ -68,3 +68,23 @@ struct TodayForecastModel {
         self.symbolName = ""
     }
 }
+
+struct TodayPrecipitationModel {
+    let timePrecipitationModels: [TimePrecipitationModel]
+    
+    init() {
+        self.timePrecipitationModels = []
+    }
+}
+
+struct TimePrecipitationModel {
+    let time: String
+    let weather: WeatherCondition
+    let temperature: Int
+    
+    init() {
+        self.time = ""
+        self.weather = .clear
+        self.temperature = 0
+    }
+}

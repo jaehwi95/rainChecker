@@ -10,7 +10,7 @@ import Combine
 import Lottie
 
 struct MainWeatherView: View {
-    @ObservedObject var viewModel: MainWeatherViewModel
+    @StateObject var viewModel: MainWeatherViewModel
     @EnvironmentObject var router: Router
     
     var body: some View {
@@ -30,20 +30,16 @@ struct MainWeatherView: View {
                     VStack {
                         Text("33%")
                             .font(.acmeRegular80)
-                        Text("Chance of Rain")
-                            .font(.acmeRegular28)
-                            .padding(.leading, 40)
+                        HStack {
+                            Spacer()
+                                .fullWidth()
+                            Text("Chance of Rain")
+                                .font(.acmeRegular28)
+                                .fullWidth()
+                        }
                     }
                     LottieView(animation: .named("clear-day"))
                         .looping()
-                    Text("Today's precipitation overview")
-                    HStack {
-                        ForEach(0..<3) { value in
-                            Rectangle()
-                                .frame(maxWidth: .infinity)
-                                .aspectRatio(1, contentMode: .fit)
-                        }
-                    }.fullWidth()
                     Text("\(Date.now.formatted(date: .abbreviated, time: .shortened))")
                     
                     Text("7-Day Forecast")
@@ -54,9 +50,7 @@ struct MainWeatherView: View {
                     }
                     Text("\(viewModel.currentWeatherModel.humidity)")
                     Button {
-                        Task {
-                            await viewModel.getCurrentLocation()
-                        }
+                        print("\(viewModel.currentLocation)")
                     } label: {
                         Text("get location")
                     }
@@ -67,8 +61,33 @@ struct MainWeatherView: View {
         }
         .onAppear {
             Task {
-                await viewModel.getCurrentWeather()
+                await withTaskGroup(of: Void.self) { group in
+                    group.addTask { await viewModel.getCurrentWeather() }
+                    group.addTask { await viewModel.getCurrentLocation() }
+                    group.addTask { await viewModel.getTodayPrecipitationPercentage() }
+                    await group.waitForAll()
+                }
             }
+        }
+        .onChange(of: viewModel.authorizationStatus) { _, newValue in
+            Task {
+                await viewModel.getCurrentLocation()
+            }
+        }
+    }
+}
+
+extension MainWeatherView {
+    private var TodayPrecipitationView: some View {
+        VStack {
+            Text("Today's precipitation overview")
+            HStack {
+                ForEach(0..<3) { value in
+                    Rectangle()
+                        .frame(maxWidth: .infinity)
+                        .aspectRatio(1, contentMode: .fit)
+                }
+            }.fullWidth()
         }
     }
 }

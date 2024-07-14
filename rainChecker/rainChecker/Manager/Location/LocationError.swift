@@ -9,8 +9,12 @@ import Foundation
 
 enum LocationError: Error {
     case notAuthorized
-    case invalidCurrentLocation
-    case invalidCity
-    case invalidCountry
-    case failFetchCityCountry
+    case unknown
+    
+//    var errorDescription: String {
+//        switch self {
+//        default:
+//            return "unknown error"
+//        }
+//    }
 }

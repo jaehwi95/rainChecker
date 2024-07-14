@@ -29,6 +29,7 @@
 		1953D29A2C1B8D4A00D979DE /* thunderstorms-rain.json in Resources */ = {isa = PBXBuildFile; fileRef = 1953D2942C1B8D4A00D979DE /* thunderstorms-rain.json */; };
 		1953D29B2C1B8D4A00D979DE /* drizzle.json in Resources */ = {isa = PBXBuildFile; fileRef = 1953D2902C1B8D4A00D979DE /* drizzle.json */; };
 		1953D29E2C1CCA4800D979DE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1953D29D2C1CCA4800D979DE /* LocationManager.swift */; };
+		196720492C4449A600DA5237 /* CLAuthorizationStatus+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196720482C44499700DA5237 /* CLAuthorizationStatus+.swift */; };
 		197F52C42C19B32700AB786C /* rainCheckerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F52C32C19B32700AB786C /* rainCheckerApp.swift */; };
 		197F52C82C19B32800AB786C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 197F52C72C19B32800AB786C /* Assets.xcassets */; };
 		197F52D32C19B4CC00AB786C /* MainWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F52D22C19B4CC00AB786C /* MainWeatherView.swift */; };
@@ -61,6 +62,7 @@
 		1953D2942C1B8D4A00D979DE /* thunderstorms-rain.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "thunderstorms-rain.json"; sourceTree = "<group>"; };
 		1953D29D2C1CCA4800D979DE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		1953D29F2C1CD10F00D979DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		196720482C44499700DA5237 /* CLAuthorizationStatus+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLAuthorizationStatus+.swift"; sourceTree = "<group>"; };
 		197F52C02C19B32700AB786C /* rainChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rainChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		197F52C32C19B32700AB786C /* rainCheckerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rainCheckerApp.swift; sourceTree = "<group>"; };
 		197F52C72C19B32800AB786C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,16 +86,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1933C2232C2DCEDA00EF5C29 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		1953D26F2C1B387800D979DE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				196720482C44499700DA5237 /* CLAuthorizationStatus+.swift */,
 				1933C22E2C316E7A00EF5C29 /* Double+.swift */,
 				1933C22C2C316AD900EF5C29 /* Date+.swift */,
 				1953D2722C1B38A300D979DE /* CLLocation+.swift */,
@@ -201,7 +197,6 @@
 				1953D26F2C1B387800D979DE /* Extensions */,
 				197F52DC2C19B79E00AB786C /* Manager */,
 				1954447E2C3184EA00BEA416 /* Preview Content */,
-				1933C2232C2DCEDA00EF5C29 /* Views */,
 			);
 			path = rainChecker;
 			sourceTree = "<group>";
@@ -332,6 +327,7 @@
 				197F52D52C19B4DD00AB786C /* MainWeatherViewModel.swift in Sources */,
 				1953D2822C1B59F000D979DE /* WeatherModel.swift in Sources */,
 				197F52D32C19B4CC00AB786C /* MainWeatherView.swift in Sources */,
+				196720492C4449A600DA5237 /* CLAuthorizationStatus+.swift in Sources */,
 				1933C2332C3178A400EF5C29 /* LocationError.swift in Sources */,
 				1953D29E2C1CCA4800D979DE /* LocationManager.swift in Sources */,
 				1933C22D2C316ADC00EF5C29 /* Date+.swift in Sources */,
@@ -474,8 +470,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = rainChecker/Assets/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app needs access to your location to provide location-based services";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "The app needs access to your location to provide location-based services";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app needs access to your location to provide location-based services";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "The app needs access to your location to provide location-based weather services";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app needs access to your location to provide location-based weather services";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -509,8 +505,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = rainChecker/Assets/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app needs access to your location to provide location-based services";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "The app needs access to your location to provide location-based services";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app needs access to your location to provide location-based services";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "The app needs access to your location to provide location-based weather services";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app needs access to your location to provide location-based weather services";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

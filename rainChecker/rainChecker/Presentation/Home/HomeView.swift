@@ -29,7 +29,6 @@ struct HomeView: View {
         }
         .onAppear {
             UITabBar.appearance().barTintColor = .white
-            viewModel.requestLocationAuthorization()
         }
     }
 }

@@ -13,7 +13,5 @@ class HomeViewModel: ObservableObject {
 }
 
 extension HomeViewModel {
-    func requestLocationAuthorization() {
-        LocationManager.shared.requestAuthorization()
-    }
+    
 }
