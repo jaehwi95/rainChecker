@@ -69,22 +69,64 @@ struct TodayForecastModel {
     }
 }
 
-struct TodayPrecipitationModel {
-    let timePrecipitationModels: [TimePrecipitationModel]
+struct HourlyForecastModel: Hashable {
+    let feelsLikeTemperature: Int
+    let actualTemperature: Int
+    let humidity: Double
+    let date: Date
+    let precipitationChance: Double
+    let precipitation: Precipitation
+    let symbolName: String
+    let weather: WeatherCondition
+    let precipitationAmount: Measurement<UnitLength>
     
-    init() {
-        self.timePrecipitationModels = []
+    init(
+        feelsLikeTemperature: Double,
+        actualTemperature: Double,
+        humidity: Double,
+        date: Date,
+        precipitationChance: Double,
+        precipitation: Precipitation,
+        symbolName: String,
+        weather: WeatherCondition,
+        precipitationAmount: Measurement<UnitLength>
+    ) {
+        self.feelsLikeTemperature = feelsLikeTemperature.toInt() ?? 0
+        self.actualTemperature = actualTemperature.toInt() ?? 0
+        self.humidity = humidity
+        self.date = date
+        self.precipitationChance = precipitationChance
+        self.precipitation = precipitation
+        self.symbolName = symbolName
+        self.weather = weather
+        self.precipitationAmount = precipitationAmount
     }
 }
 
-struct TimePrecipitationModel {
-    let time: String
+struct WeeklyForecastModel: Hashable {
+    let highTemperature: Double
+    let lowTemperature: Double
+    let precipitation: Precipitation
+    let precipitationChance: Double
+    let date: Date
     let weather: WeatherCondition
-    let temperature: Int
+    let symbolName: String
     
-    init() {
-        self.time = ""
-        self.weather = .clear
-        self.temperature = 0
+    init(
+        highTemperature: Double,
+        lowTemperature: Double,
+        precipitation: Precipitation,
+        precipitationChance: Double,
+        date: Date,
+        weather: WeatherCondition,
+        symbolName: String
+    ) {
+        self.highTemperature = highTemperature
+        self.lowTemperature = lowTemperature
+        self.precipitation = precipitation
+        self.precipitationChance = precipitationChance
+        self.date = date
+        self.weather = weather
+        self.symbolName = symbolName
     }
 }

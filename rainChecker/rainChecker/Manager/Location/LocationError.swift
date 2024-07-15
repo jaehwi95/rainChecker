@@ -8,7 +8,8 @@
 import Foundation
 
 enum LocationError: Error {
-    case notAuthorized
+    case restricted
+    case denied
     case unknown
     
 //    var errorDescription: String {
@@ -17,4 +18,11 @@ enum LocationError: Error {
 //            return "unknown error"
 //        }
 //    }
+}
+
+enum GeocodeError: Error {
+    case invalidPlacemark
+    case invalidCity
+    case invalidCountry
+    case reverseGeocodeFailure
 }

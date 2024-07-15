@@ -38,43 +38,31 @@ struct MainWeatherView: View {
                                 .fullWidth()
                         }
                     }
-                    LottieView(animation: .named("clear-day"))
-                        .looping()
-                    Text("\(Date.now.formatted(date: .abbreviated, time: .shortened))")
-                    
+                    VStack {
+                        Text("Today's Weather")
+                        LottieView(animation: .named(viewModel.currentWeatherModel.weather.jsonName))
+                            .looping()
+                            .frame(height: 300)
+                    }
+                    Text("Hourly Forecast")
+                    HourlyWeatherView
                     Text("7-Day Forecast")
                     List {
                         ForEach(0..<7) { value in
                             Text("\(value)")
                         }
                     }
-                    Text("\(viewModel.currentWeatherModel.humidity)")
-                    Button {
-                        print("\(viewModel.currentLocation)")
-                    } label: {
-                        Text("get location")
-                    }
-
                     Text("\(viewModel.currentWeatherModel.isRaining ? "Raining!" : "Not Raining!")")
                 }.padding(.horizontal, 20)
-            }
-        }
-        .onAppear {
-            Task {
-                await withTaskGroup(of: Void.self) { group in
-                    group.addTask { await viewModel.getCurrentWeather() }
-                    group.addTask { await viewModel.getCurrentLocation() }
-                    group.addTask { await viewModel.getTodayPrecipitationPercentage() }
-                    await group.waitForAll()
-                }
             }
         }
         .onChange(of: viewModel.authorizationStatus) { _, newValue in
             Task {
                 await withTaskGroup(of: Void.self) { group in
-                    group.addTask { await viewModel.getCurrentWeather() }
                     group.addTask { await viewModel.getCurrentLocation() }
-                    group.addTask { await viewModel.getTodayPrecipitationPercentage() }
+                    group.addTask { await viewModel.getCurrentWeather() }
+                    group.addTask { await viewModel.getTodayWeatherForecast() }
+                    group.addTask { await viewModel.getWeekWeatherForecast() }
                     await group.waitForAll()
                 }
             }
@@ -83,6 +71,10 @@ struct MainWeatherView: View {
 }
 
 extension MainWeatherView {
+    private var WeatherIconView: some View {
+        VStack{}
+    }
+    
     private var TodayPrecipitationView: some View {
         VStack {
             Text("Today's precipitation overview")

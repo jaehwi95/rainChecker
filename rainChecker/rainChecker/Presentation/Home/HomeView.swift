@@ -15,8 +15,6 @@ struct HomeView: View {
     var body: some View {
         TabView {
             MainWeatherView(viewModel: .init())
-                // sets visibility for background of tabbar
-                .toolbarBackgroundVisibility(.visible, for: .tabBar)
                 .tabItem {
                     Label("Weather", systemImage: "cloud.sun.rain.fill")
                 }
@@ -28,7 +26,13 @@ struct HomeView: View {
                 .tag(1)
         }
         .onAppear {
-            UITabBar.appearance().barTintColor = .white
+            if #available(iOS 15, *) {
+                let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
+                tabBarAppearance.configureWithTransparentBackground()
+                tabBarAppearance.backgroundEffect = UIBlurEffect(style: .light)
+                UITabBar.appearance().standardAppearance = tabBarAppearance
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            }
         }
     }
 }

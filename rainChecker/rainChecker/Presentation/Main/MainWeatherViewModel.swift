@@ -11,8 +11,6 @@ import CoreLocation
 
 @MainActor
 class MainWeatherViewModel: ObservableObject {
-    @Published var isLoading: Bool = false
-    
     private let locationManager = LocationManager.shared
     var currentLocation: CLLocation { locationManager.currentLocation ?? .seoul }
     @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
@@ -20,7 +18,8 @@ class MainWeatherViewModel: ObservableObject {
     @Published var currentLocationString: String = ""
     
     @Published var currentWeatherModel: CurrentWeatherModel = .init()
-    @Published var todayPrecipitationModel: TodayPrecipitationModel = .init()
+    @Published var hourlyForecastModels: [HourlyForecastModel] = []
+    @Published var weeklyForecastModels: [WeeklyForecastModel] = []
     @Published var todayRainPercentage: String = ""
     
     init() {
@@ -34,6 +33,7 @@ class MainWeatherViewModel: ObservableObject {
     }
 }
 
+// Location Logics
 extension MainWeatherViewModel {
     private func observeAuthorizationStatus() async {
         do {
@@ -43,7 +43,7 @@ extension MainWeatherViewModel {
         } catch {
             if let locationError = error as? LocationError {
                 // TODO: handle error
-                print("error: \(locationError)")
+                print("LocationError: \(locationError)")
             }
         }
     }
@@ -72,58 +72,46 @@ extension MainWeatherViewModel {
         switch result {
         case .success(let data):
             currentLocationString = "\(data.city), \(data.country)"
-        case .failure(let failure):
-            print("Error: \(failure)")
+        case .failure(let geocodeError):
+            // TODO: handle error
+            print("GeocodeError: \(geocodeError)")
         }
     }
 }
 
+// Weather Logics
 extension MainWeatherViewModel {
     func getCurrentWeather() async {
-        isLoading = true
         let result = await WeatherManager.shared.getCurrentWeather(location: currentLocation)
         switch result {
         case .success(let data):
-            print("jaebi: current weather \(data)")
             currentWeatherModel = data
         case .failure(let failure):
             print("Error: \(failure)")
         }
-        isLoading = false
     }
     
-    func getTodayPrecipitationPercentage() async {
-        isLoading = true
-        let result = await WeatherManager.shared.getHourlyPrecipitation(location: currentLocation)
+    func getTodayWeatherForecast() async {
+        let result = await WeatherManager.shared.getTodayWeatherForecast(location: currentLocation)
         switch result {
         case .success(let data):
-            todayRainPercentage = data.first?.toPercentage() ?? ""
+//            let filteredModels = data.filter{ hourlyForecastModel in
+//                hourlyForecastModel.date.isAfterCurrentHour()
+//            }
+            hourlyForecastModels = data
         case .failure(let failure):
             print("Error: \(failure)")
         }
-        isLoading = false
     }
     
-    func getTemperaturePrecipitationChange() async {
-        
+    func getWeekWeatherForecast() async {
+        let result = await WeatherManager.shared.getWeekWeatherForecast(location: currentLocation)
+        switch result {
+        case .success(let data):
+            weeklyForecastModels = data
+            todayRainPercentage = (weeklyForecastModels.first?.precipitationChance ?? 0.0).toPercentage() ?? ""
+        case .failure(let failure):
+            print("Error: \(failure)")
+        }
     }
-    
-    func getWeather() async {
-        isLoading = true
-//        let result = await WeatherManager.shared.getWeather(location: currentLocation)
-//        switch result {
-//        case .success(let weatherData):
-//            print("\(weatherData)")
-//        case .failure(let failure):
-//            print("Error: \(failure)")
-//        }
-        isLoading = false
-    }
-}
-
-enum GeocodeError: Error {
-    case invalidPlacemark
-    case invalidCity
-    case invalidCountry
-    case reverseGeocodeFailure
 }

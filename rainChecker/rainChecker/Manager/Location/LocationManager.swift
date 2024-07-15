@@ -40,16 +40,16 @@ extension LocationManager {
             manager.requestWhenInUseAuthorization()
         case .restricted:
             print("Location Restricted")
-            authorizationStatusContinuation?.finish(throwing: LocationError.notAuthorized)
+            authorizationStatusContinuation?.finish(throwing: LocationError.restricted)
         case .denied:
             print("Location Denied")
-            authorizationStatusContinuation?.finish(throwing: LocationError.notAuthorized)
+            authorizationStatusContinuation?.finish(throwing: LocationError.denied)
         case .authorizedAlways, .authorizedWhenInUse, .authorized:
             print("Location Authorized")
             authorizationStatusContinuation?.yield(manager.authorizationStatus)
             self.currentLocation = manager.location
         @unknown default:
-            print("Location Unknown")
+            print("Location Unknown error")
             authorizationStatusContinuation?.finish(throwing: LocationError.unknown)
         }
     }
