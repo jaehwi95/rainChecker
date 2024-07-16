@@ -8,7 +8,6 @@
 import SwiftUI
 import Combine
 import Lottie
-import MapKit
 
 struct MainWeatherView: View {
     @StateObject var viewModel: MainWeatherViewModel
