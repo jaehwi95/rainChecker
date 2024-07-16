@@ -29,4 +29,14 @@ extension Double {
             return nil
         }
     }
+    
+    func toTemperature() -> String {
+        let temperature: Measurement<UnitTemperature> = Measurement(value: self, unit: UnitTemperature.celsius)
+        let formatter = MeasurementFormatter()
+        formatter.unitStyle = .medium
+        formatter.numberFormatter.maximumFractionDigits = 0
+        formatter.numberFormatter.roundingMode = .halfUp
+        formatter.unitOptions = .providedUnit
+        return formatter.string(from: temperature.converted(to: .celsius))
+    }
 }

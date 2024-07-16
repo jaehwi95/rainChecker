@@ -11,18 +11,21 @@ import Lottie
 
 extension MainWeatherView {
     var HourlyWeatherView: some View {
-        ScrollView(.horizontal) {
-            HStack(spacing: 20) {
-                ForEach(viewModel.hourlyForecastModels, id: \.self) { hourlyForecastModel in
-                    VStack {
-                        HourlyCardView(
-                            time: hourlyForecastModel.date.extractComponent(.hourMinute),
-                            iconName: hourlyForecastModel.weather.jsonName,
-                            feelsLikeTemperature: String(hourlyForecastModel.feelsLikeTemperature),
-                            actualTemperature: String(hourlyForecastModel.actualTemperature),
-                            humidity: String(hourlyForecastModel.humidity),
-                            precipitaionChance: hourlyForecastModel.precipitationChance.toPercentage() ?? ""
-                        )
+        VStack {
+            Text("Hourly Rain Forecast")
+            ScrollView(.horizontal) {
+                HStack(spacing: 20) {
+                    ForEach(viewModel.hourlyForecastModels, id: \.self) { hourlyForecastModel in
+                        VStack {
+                            HourlyCardView(
+                                time: hourlyForecastModel.date.extractComponent(.hourMinute),
+                                iconName: hourlyForecastModel.weather.jsonName,
+                                feelsLikeTemperature: hourlyForecastModel.feelsLikeTemperature.toTemperature(),
+                                actualTemperature: hourlyForecastModel.actualTemperature.toTemperature(),
+                                humidity: hourlyForecastModel.humidity.toPercentage() ?? "",
+                                precipitaionChance: hourlyForecastModel.precipitationChance.toPercentage() ?? ""
+                            )
+                        }
                     }
                 }
             }
@@ -41,8 +44,8 @@ extension MainWeatherView {
         var body: some View {
             VStack {
                 FlipCardView(
-                    frontView: FrontHourlyCardView(time: time, iconName: iconName, actualTemperature: feelsLikeTemperature),
-                    backView: BackHourlyCardView(time: time, feelsLikeTemperature: feelsLikeTemperature, humidity: humidity, precipitaionChance: precipitaionChance),
+                    frontView: FrontHourlyCardView(time: time, iconName: iconName, precipitaionChance: precipitaionChance),
+                    backView: BackHourlyCardView(time: time, actualTemperature: feelsLikeTemperature, feelsLikeTemperature: feelsLikeTemperature, humidity: humidity),
                     isFlip: $isFlip
                 )
             }
@@ -52,7 +55,7 @@ extension MainWeatherView {
     private struct FrontHourlyCardView: View {
         let time: String
         let iconName: String
-        let actualTemperature: String
+        let precipitaionChance: String
         
         var body: some View {
             VStack(spacing: 0) {
@@ -61,8 +64,9 @@ extension MainWeatherView {
                     .looping()
                     .frame(height: 40)
                 HStack {
-                    Image(systemName: "thermometer.medium")
-                    Text("\(actualTemperature)")
+                    Image(systemName: "umbrella.percent")
+                    Text("\(precipitaionChance)")
+                        .font(.system(size: 14))
                 }
             }
         }
@@ -70,30 +74,29 @@ extension MainWeatherView {
 
     private struct BackHourlyCardView: View {
         let time: String
+        let actualTemperature: String
         let feelsLikeTemperature: String
         let humidity: String
-        let precipitaionChance: String
         
         var body: some View {
-            VStack(spacing: 0) {
+            VStack {
                 Text("\(time)")
+                HStack {
+                    Image(systemName: "thermometer.medium")
+                    Text("\(actualTemperature)")
+                        .font(.system(size: 14))
+                }
                 HStack {
                     Image(systemName: "thermometer.variable.and.figure")
                     Text("\(feelsLikeTemperature)")
-                        .font(.system(size: 10))
+                        .font(.system(size: 14))
                 }
                 HStack {
                     Image(systemName: "humidity")
                     Text("\(humidity)")
-                        .font(.system(size: 10))
-                }
-                HStack {
-                    Image(systemName: "umbrella.percent")
-                    Text("\(precipitaionChance)")
-                        .font(.system(size: 10))
+                        .font(.system(size: 14))
                 }
             }
         }
     }
-
 }

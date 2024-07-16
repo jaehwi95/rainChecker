@@ -30,6 +30,10 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.authorizationStatus = locationManager.authorizationStatus
     }
+    
+    func requestLocationPermission() {
+        self.locationManager.requestWhenInUseAuthorization()
+    }
 }
 
 extension LocationManager {

@@ -10,5 +10,6 @@ import SwiftUI
 
 extension Font {
     static let acmeRegular80: Font = .custom("Acme-Regular", size: 80)
+    static let acmeRegular40: Font = .custom("Acme-Regular", size: 40)
     static let acmeRegular28: Font = .custom("Acme-Regular", size: 28)
 }

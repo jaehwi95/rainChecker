@@ -33,6 +33,9 @@
 		197F52D92C19B54A00AB786C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F52D82C19B54A00AB786C /* Router.swift */; };
 		197F52DB2C19B55100AB786C /* RouterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F52DA2C19B55100AB786C /* RouterView.swift */; };
 		197F52DE2C19B7AC00AB786C /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F52DD2C19B7AC00AB786C /* WeatherManager.swift */; };
+		EB2653492C4602C1003B89D4 /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2653482C4602C1003B89D4 /* Int+.swift */; };
+		EB26534C2C46098A003B89D4 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB26534B2C46098A003B89D4 /* WeekView.swift */; };
+		EB26534E2C460996003B89D4 /* WeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB26534D2C460996003B89D4 /* WeekViewModel.swift */; };
 		EBDF7FC22C44C02C00C9BD4C /* thunderstorms-day.json in Resources */ = {isa = PBXBuildFile; fileRef = EBDF7FB62C44C02B00C9BD4C /* thunderstorms-day.json */; };
 		EBDF7FC32C44C02C00C9BD4C /* sunset.json in Resources */ = {isa = PBXBuildFile; fileRef = EBDF7FB72C44C02B00C9BD4C /* sunset.json */; };
 		EBDF7FC42C44C02C00C9BD4C /* fog.json in Resources */ = {isa = PBXBuildFile; fileRef = EBDF7FB82C44C02B00C9BD4C /* fog.json */; };
@@ -78,6 +81,9 @@
 		197F52D82C19B54A00AB786C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		197F52DA2C19B55100AB786C /* RouterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterView.swift; sourceTree = "<group>"; };
 		197F52DD2C19B7AC00AB786C /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		EB2653482C4602C1003B89D4 /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
+		EB26534B2C46098A003B89D4 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
+		EB26534D2C460996003B89D4 /* WeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewModel.swift; sourceTree = "<group>"; };
 		EBDF7FB62C44C02B00C9BD4C /* thunderstorms-day.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "thunderstorms-day.json"; path = "../../../../../../Downloads/thunderstorms-day.json"; sourceTree = "<group>"; };
 		EBDF7FB72C44C02B00C9BD4C /* sunset.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = sunset.json; path = ../../../../../../Downloads/sunset.json; sourceTree = "<group>"; };
 		EBDF7FB82C44C02B00C9BD4C /* fog.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = fog.json; path = ../../../../../../Downloads/fog.json; sourceTree = "<group>"; };
@@ -116,6 +122,7 @@
 				1933C2242C2DD20900EF5C29 /* View+.swift */,
 				1933C2282C2DD92D00EF5C29 /* Font+.swift */,
 				EBDF7FCE2C44F7A000C9BD4C /* WeatherCondition+.swift */,
+				EB2653482C4602C1003B89D4 /* Int+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -149,6 +156,7 @@
 		1953D2752C1B3FFD00D979DE /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				EB26534A2C460975003B89D4 /* Week */,
 				197F52D72C19B54100AB786C /* Router */,
 				1953D2762C1B4EC900D979DE /* Home */,
 				1953D27B2C1B4FFC00D979DE /* Chart */,
@@ -258,6 +266,15 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		EB26534A2C460975003B89D4 /* Week */ = {
+			isa = PBXGroup;
+			children = (
+				EB26534B2C46098A003B89D4 /* WeekView.swift */,
+				EB26534D2C460996003B89D4 /* WeekViewModel.swift */,
+			);
+			path = Week;
+			sourceTree = "<group>";
+		};
 		EBDF7FD42C45008300C9BD4C /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB26534C2C46098A003B89D4 /* WeekView.swift in Sources */,
 				EBDF7FCF2C44F7A000C9BD4C /* WeatherCondition+.swift in Sources */,
 				197F52DE2C19B7AC00AB786C /* WeatherManager.swift in Sources */,
 				1953D27A2C1B4F1100D979DE /* HomeViewModel.swift in Sources */,
@@ -364,10 +382,12 @@
 				197F52C42C19B32700AB786C /* rainCheckerApp.swift in Sources */,
 				1933C2252C2DD20900EF5C29 /* View+.swift in Sources */,
 				1953D27D2C1B500500D979DE /* ChartView.swift in Sources */,
+				EB26534E2C460996003B89D4 /* WeekViewModel.swift in Sources */,
 				1933C2292C2DD92D00EF5C29 /* Font+.swift in Sources */,
 				1933C22F2C316E7C00EF5C29 /* Double+.swift in Sources */,
 				197F52D92C19B54A00AB786C /* Router.swift in Sources */,
 				1953D2732C1B38A300D979DE /* CLLocation+.swift in Sources */,
+				EB2653492C4602C1003B89D4 /* Int+.swift in Sources */,
 				197F52DB2C19B55100AB786C /* RouterView.swift in Sources */,
 				1953D2782C1B4F0700D979DE /* HomeView.swift in Sources */,
 				197F52D52C19B4DD00AB786C /* MainWeatherViewModel.swift in Sources */,

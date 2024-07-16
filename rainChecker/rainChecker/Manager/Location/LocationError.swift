@@ -24,5 +24,6 @@ enum GeocodeError: Error {
     case invalidPlacemark
     case invalidCity
     case invalidCountry
+    case invalidCoordinate
     case reverseGeocodeFailure
 }

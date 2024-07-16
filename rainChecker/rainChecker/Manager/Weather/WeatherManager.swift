@@ -25,7 +25,8 @@ final class WeatherManager {
                 actualTemperature: currentWeather.temperature.value,
                 humidity: currentWeather.humidity,
                 weather: currentWeather.condition,
-                symbolName: currentWeather.symbolName
+                symbolName: currentWeather.symbolName,
+                date: currentWeather.date
             )
             return .success(currentWeatherModel)
         } catch {

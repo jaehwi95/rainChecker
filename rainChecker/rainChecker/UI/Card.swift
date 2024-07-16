@@ -60,8 +60,8 @@ private struct FlipOpacity: AnimatableModifier {
 private struct CardModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .frame(width: 80, height: 80)
-            .background(RoundedRectangle(cornerRadius: 15).fill(.white))
+            .frame(width: 100, height: 100)
+            .background(RoundedRectangle(cornerRadius: 15).fill(.white.opacity(0.2)))
             .clipShape(RoundedRectangle(cornerRadius: 15))
             .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 1)
     }

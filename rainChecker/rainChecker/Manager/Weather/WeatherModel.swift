@@ -9,19 +9,21 @@ import Foundation
 import WeatherKit
 
 struct CurrentWeatherModel {
-    let feelsLikeTemperature: Int
-    let actualTemperature: Int
+    let feelsLikeTemperature: Double
+    let actualTemperature: Double
     let humidity: Double
     let weather: WeatherCondition
     let symbolName: String
+    let date: Date
     let isRaining: Bool
     
     init() {
-        self.feelsLikeTemperature = 0
-        self.actualTemperature = 0
+        self.feelsLikeTemperature = 0.0
+        self.actualTemperature = 0.0
         self.humidity = 0.0
         self.weather = .clear
         self.symbolName = ""
+        self.date = .now
         self.isRaining = false
     }
     
@@ -30,13 +32,15 @@ struct CurrentWeatherModel {
         actualTemperature: Double,
         humidity: Double,
         weather: WeatherCondition,
-        symbolName: String
+        symbolName: String,
+        date: Date
     ) {
-        self.feelsLikeTemperature = feelsLikeTemperature.toInt() ?? 0
-        self.actualTemperature = actualTemperature.toInt() ?? 0
+        self.feelsLikeTemperature = feelsLikeTemperature
+        self.actualTemperature = actualTemperature
         self.humidity = humidity
         self.weather = weather
         self.symbolName = symbolName
+        self.date = date
         switch weather {
         // All raining weather conditions
         case .drizzle, .heavyRain, .isolatedThunderstorms, .rain, .sunShowers, .scatteredThunderstorms, .strongStorms, .thunderstorms:
@@ -70,8 +74,8 @@ struct TodayForecastModel {
 }
 
 struct HourlyForecastModel: Hashable {
-    let feelsLikeTemperature: Int
-    let actualTemperature: Int
+    let feelsLikeTemperature: Double
+    let actualTemperature: Double
     let humidity: Double
     let date: Date
     let precipitationChance: Double
@@ -91,8 +95,8 @@ struct HourlyForecastModel: Hashable {
         weather: WeatherCondition,
         precipitationAmount: Measurement<UnitLength>
     ) {
-        self.feelsLikeTemperature = feelsLikeTemperature.toInt() ?? 0
-        self.actualTemperature = actualTemperature.toInt() ?? 0
+        self.feelsLikeTemperature = feelsLikeTemperature
+        self.actualTemperature = actualTemperature
         self.humidity = humidity
         self.date = date
         self.precipitationChance = precipitationChance

@@ -63,4 +63,6 @@ extension Date {
 
 enum DateExtractComponent: String {
     case hourMinute = "HH:mm"
+    case monthDay = "MMM d"
+    case weekday = "EEE"
 }

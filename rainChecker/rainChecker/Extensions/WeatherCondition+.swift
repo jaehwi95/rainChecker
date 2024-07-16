@@ -30,7 +30,7 @@ extension WeatherCondition {
         case .rain, .heavyRain, .sunShowers:
             return "rain"
         case .drizzle:
-            return "dizzle"
+            return "drizzle"
         case .snow, .blizzard, .blowingSnow, .flurries, .frigid, .heavySnow, .sleet, .sunFlurries, .wintryMix:
             return "snow"
         case .partlyCloudy:
