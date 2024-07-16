@@ -40,16 +40,32 @@ struct MainWeatherView: View {
                     .presentationDetents([.medium])
             }
         )
-        .onChange(of: viewModel.authorizationStatus) { _, newValue in
-            Task {
-                await viewModel.getCurrentLocation()
-                await withTaskGroup(of: Void.self) { group in
-                    group.addTask { await viewModel.getCurrentWeather(location: viewModel.currentLocation) }
-                    group.addTask { await viewModel.getTodayWeatherForecast(location: viewModel.currentLocation) }
-                    group.addTask { await viewModel.getWeekWeatherForecast(location: viewModel.currentLocation) }
-                    await group.waitForAll()
+        .apply {
+                if #available(iOS 17.0, *) {
+                    $0.onChange(of: viewModel.authorizationStatus) { _, newValue in
+                        Task {
+                            await viewModel.getCurrentLocation()
+                            await withTaskGroup(of: Void.self) { group in
+                                group.addTask { await viewModel.getCurrentWeather(location: viewModel.currentLocation) }
+                                group.addTask { await viewModel.getTodayWeatherForecast(location: viewModel.currentLocation) }
+                                group.addTask { await viewModel.getWeekWeatherForecast(location: viewModel.currentLocation) }
+                                await group.waitForAll()
+                            }
+                        }
+                    }
+                } else {
+                    $0.onChange(of: viewModel.authorizationStatus) { value in
+                        Task {
+                            await viewModel.getCurrentLocation()
+                            await withTaskGroup(of: Void.self) { group in
+                                group.addTask { await viewModel.getCurrentWeather(location: viewModel.currentLocation) }
+                                group.addTask { await viewModel.getTodayWeatherForecast(location: viewModel.currentLocation) }
+                                group.addTask { await viewModel.getWeekWeatherForecast(location: viewModel.currentLocation) }
+                                await group.waitForAll()
+                            }
+                        }
+                    }
                 }
-            }
         }
     }
 }
