@@ -8,9 +8,22 @@
 import Foundation
 
 enum LocationError: Error {
-    case notAuthorized
-    case invalidCurrentLocation
+    case restricted
+    case denied
+    case unknown
+    
+//    var errorDescription: String {
+//        switch self {
+//        default:
+//            return "unknown error"
+//        }
+//    }
+}
+
+enum GeocodeError: Error {
+    case invalidPlacemark
     case invalidCity
     case invalidCountry
-    case failFetchCityCountry
+    case invalidCoordinate
+    case reverseGeocodeFailure
 }

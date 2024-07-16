@@ -10,6 +10,7 @@ import SwiftUI
 class Router: ObservableObject {
     enum Route: Hashable {
         case mainWeatherView
+        case weekView
         case chartView
     }
     
@@ -21,6 +22,8 @@ class Router: ObservableObject {
         switch route {
         case .mainWeatherView:
             MainWeatherView(viewModel: .init())
+        case .weekView:
+            WeekView(viewModel: .init())
         case .chartView:
             ChartView(viewModel: .init())
         }

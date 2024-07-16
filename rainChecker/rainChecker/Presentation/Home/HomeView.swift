@@ -15,21 +15,29 @@ struct HomeView: View {
     var body: some View {
         TabView {
             MainWeatherView(viewModel: .init())
-                // sets visibility for background of tabbar
-                .toolbarBackgroundVisibility(.visible, for: .tabBar)
                 .tabItem {
                     Label("Weather", systemImage: "cloud.sun.rain.fill")
                 }
                 .tag(0)
-            ChartView(viewModel: .init())
-                .tabItem {
-                    Label("Chart", systemImage: "chart.bar.xaxis")
-                }
-                .tag(1)
+//            WeekView(viewModel: .init())
+//                .tabItem {
+//                    Label("Week", systemImage: "7.square")
+//                }
+//                .tag(1)
+//            ChartView(viewModel: .init())
+//                .tabItem {
+//                    Label("Chart", systemImage: "chart.bar.xaxis")
+//                }
+//                .tag(2)
         }
         .onAppear {
-            UITabBar.appearance().barTintColor = .white
-            viewModel.requestLocationAuthorization()
+            if #available(iOS 15, *) {
+                let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
+                tabBarAppearance.configureWithTransparentBackground()
+                tabBarAppearance.backgroundEffect = UIBlurEffect(style: .light)
+                UITabBar.appearance().standardAppearance = tabBarAppearance
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            }
         }
     }
 }

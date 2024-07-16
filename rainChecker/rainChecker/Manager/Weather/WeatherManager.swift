@@ -25,7 +25,8 @@ final class WeatherManager {
                 actualTemperature: currentWeather.temperature.value,
                 humidity: currentWeather.humidity,
                 weather: currentWeather.condition,
-                symbolName: currentWeather.symbolName
+                symbolName: currentWeather.symbolName,
+                date: currentWeather.date
             )
             return .success(currentWeatherModel)
         } catch {
@@ -33,26 +34,45 @@ final class WeatherManager {
         }
     }
     
-    func getHourlyPrecipitation(location: CLLocation) async -> Result<[Measurement<UnitLength>], Error> {
+    func getTodayWeatherForecast(location: CLLocation) async -> Result<[HourlyForecastModel], Error> {
         do {
-            let hourlyPrecipitation = try await weatherService
-                .weather(for: location, including: .hourly)
-                .map(\.precipitationAmount)
-            return .success(hourlyPrecipitation)
+            let hourlyWeatherForecast = try await weatherService
+                .weather(for: location, including: .hourly(startDate: Date.startOfDay, endDate: Date.tomorrowStartOfDay))
+            let hourlyWeatherModels: [HourlyForecastModel] = hourlyWeatherForecast.map { weatherForecast in
+                HourlyForecastModel(
+                    feelsLikeTemperature: weatherForecast.apparentTemperature.value,
+                    actualTemperature: weatherForecast.temperature.value,
+                    humidity: weatherForecast.humidity,
+                    date: weatherForecast.date,
+                    precipitationChance: weatherForecast.precipitationChance,
+                    precipitation: weatherForecast.precipitation,
+                    symbolName: weatherForecast.symbolName,
+                    weather: weatherForecast.condition,
+                    precipitationAmount: weatherForecast.precipitationAmount
+                )
+            }
+            return .success(hourlyWeatherModels)
         } catch {
             return .failure(error)
         }
     }
     
-    func getTodayForecast(location: CLLocation) async -> Result<Weather, Error> {
+    func getWeekWeatherForecast(location: CLLocation) async -> Result<[WeeklyForecastModel], Error> {
         do {
-            let weather = try await weatherService.weather(for: location)
-//            if let dailyForecast = weather.dailyForecast {
-//                if let today = dailyForecast.forecast.first {
-//                    
-//                }
-//            }
-            return .success(weather)
+            let dailyWeatherForecast = try await weatherService
+                .weather(for: location, including: .daily(startDate: Date.tomorrowStartOfDay, endDate: Date.nextWeekEndOfDay))
+            let dailyWeatherModels: [WeeklyForecastModel] = dailyWeatherForecast.map { weatherForecast in
+                WeeklyForecastModel(
+                    highTemperature: weatherForecast.highTemperature.value,
+                    lowTemperature: weatherForecast.lowTemperature.value,
+                    precipitation: weatherForecast.precipitation,
+                    precipitationChance: weatherForecast.precipitationChance,
+                    date: weatherForecast.date,
+                    weather: weatherForecast.condition,
+                    symbolName: weatherForecast.symbolName
+                )
+            }
+            return .success(dailyWeatherModels)
         } catch {
             return .failure(error)
         }
