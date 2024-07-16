@@ -33,21 +33,21 @@
 		197F52D92C19B54A00AB786C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F52D82C19B54A00AB786C /* Router.swift */; };
 		197F52DB2C19B55100AB786C /* RouterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F52DA2C19B55100AB786C /* RouterView.swift */; };
 		197F52DE2C19B7AC00AB786C /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F52DD2C19B7AC00AB786C /* WeatherManager.swift */; };
+		19FCC3602C4675A400FF43F9 /* wind.json in Resources */ = {isa = PBXBuildFile; fileRef = 19FCC3552C4675A400FF43F9 /* wind.json */; };
+		19FCC3612C4675A400FF43F9 /* sunrise.json in Resources */ = {isa = PBXBuildFile; fileRef = 19FCC3562C4675A400FF43F9 /* sunrise.json */; };
+		19FCC3622C4675A400FF43F9 /* hail.json in Resources */ = {isa = PBXBuildFile; fileRef = 19FCC3572C4675A400FF43F9 /* hail.json */; };
+		19FCC3632C4675A400FF43F9 /* hurricane.json in Resources */ = {isa = PBXBuildFile; fileRef = 19FCC3582C4675A400FF43F9 /* hurricane.json */; };
+		19FCC3642C4675A400FF43F9 /* snow.json in Resources */ = {isa = PBXBuildFile; fileRef = 19FCC3592C4675A400FF43F9 /* snow.json */; };
+		19FCC3652C4675A400FF43F9 /* partly-cloudy-day.json in Resources */ = {isa = PBXBuildFile; fileRef = 19FCC35A2C4675A400FF43F9 /* partly-cloudy-day.json */; };
+		19FCC3662C4675A400FF43F9 /* fog.json in Resources */ = {isa = PBXBuildFile; fileRef = 19FCC35B2C4675A400FF43F9 /* fog.json */; };
+		19FCC3672C4675A400FF43F9 /* dust.json in Resources */ = {isa = PBXBuildFile; fileRef = 19FCC35C2C4675A400FF43F9 /* dust.json */; };
+		19FCC3682C4675A400FF43F9 /* sunset.json in Resources */ = {isa = PBXBuildFile; fileRef = 19FCC35D2C4675A400FF43F9 /* sunset.json */; };
+		19FCC3692C4675A400FF43F9 /* thunderstorms-day.json in Resources */ = {isa = PBXBuildFile; fileRef = 19FCC35E2C4675A400FF43F9 /* thunderstorms-day.json */; };
+		19FCC36A2C4675A400FF43F9 /* umbrella.json in Resources */ = {isa = PBXBuildFile; fileRef = 19FCC35F2C4675A400FF43F9 /* umbrella.json */; };
 		EB2653492C4602C1003B89D4 /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2653482C4602C1003B89D4 /* Int+.swift */; };
 		EB26534C2C46098A003B89D4 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB26534B2C46098A003B89D4 /* WeekView.swift */; };
 		EB26534E2C460996003B89D4 /* WeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB26534D2C460996003B89D4 /* WeekViewModel.swift */; };
-		EBDF7FC22C44C02C00C9BD4C /* thunderstorms-day.json in Resources */ = {isa = PBXBuildFile; fileRef = EBDF7FB62C44C02B00C9BD4C /* thunderstorms-day.json */; };
-		EBDF7FC32C44C02C00C9BD4C /* sunset.json in Resources */ = {isa = PBXBuildFile; fileRef = EBDF7FB72C44C02B00C9BD4C /* sunset.json */; };
-		EBDF7FC42C44C02C00C9BD4C /* fog.json in Resources */ = {isa = PBXBuildFile; fileRef = EBDF7FB82C44C02B00C9BD4C /* fog.json */; };
-		EBDF7FC72C44C02C00C9BD4C /* hail.json in Resources */ = {isa = PBXBuildFile; fileRef = EBDF7FBB2C44C02B00C9BD4C /* hail.json */; };
-		EBDF7FC92C44C02C00C9BD4C /* umbrella.json in Resources */ = {isa = PBXBuildFile; fileRef = EBDF7FBD2C44C02B00C9BD4C /* umbrella.json */; };
-		EBDF7FCA2C44C02C00C9BD4C /* hurricane.json in Resources */ = {isa = PBXBuildFile; fileRef = EBDF7FBE2C44C02B00C9BD4C /* hurricane.json */; };
-		EBDF7FCB2C44C02C00C9BD4C /* wind.json in Resources */ = {isa = PBXBuildFile; fileRef = EBDF7FBF2C44C02B00C9BD4C /* wind.json */; };
-		EBDF7FCC2C44C02C00C9BD4C /* sunrise.json in Resources */ = {isa = PBXBuildFile; fileRef = EBDF7FC02C44C02B00C9BD4C /* sunrise.json */; };
-		EBDF7FCD2C44C02C00C9BD4C /* dust.json in Resources */ = {isa = PBXBuildFile; fileRef = EBDF7FC12C44C02B00C9BD4C /* dust.json */; };
 		EBDF7FCF2C44F7A000C9BD4C /* WeatherCondition+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDF7FCE2C44F7A000C9BD4C /* WeatherCondition+.swift */; };
-		EBDF7FD12C44FB2C00C9BD4C /* partly-cloudy-day.json in Resources */ = {isa = PBXBuildFile; fileRef = EBDF7FD02C44FB2C00C9BD4C /* partly-cloudy-day.json */; };
-		EBDF7FD32C44FB3900C9BD4C /* snow.json in Resources */ = {isa = PBXBuildFile; fileRef = EBDF7FD22C44FB3900C9BD4C /* snow.json */; };
 		EBDF7FD62C45010B00C9BD4C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDF7FD52C45010B00C9BD4C /* Card.swift */; };
 		EBDF7FD82C45101900C9BD4C /* MainWeatherView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDF7FD72C45101900C9BD4C /* MainWeatherView+.swift */; };
 /* End PBXBuildFile section */
@@ -81,6 +81,17 @@
 		197F52D82C19B54A00AB786C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		197F52DA2C19B55100AB786C /* RouterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterView.swift; sourceTree = "<group>"; };
 		197F52DD2C19B7AC00AB786C /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		19FCC3552C4675A400FF43F9 /* wind.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wind.json; sourceTree = "<group>"; };
+		19FCC3562C4675A400FF43F9 /* sunrise.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sunrise.json; sourceTree = "<group>"; };
+		19FCC3572C4675A400FF43F9 /* hail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hail.json; sourceTree = "<group>"; };
+		19FCC3582C4675A400FF43F9 /* hurricane.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hurricane.json; sourceTree = "<group>"; };
+		19FCC3592C4675A400FF43F9 /* snow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = snow.json; sourceTree = "<group>"; };
+		19FCC35A2C4675A400FF43F9 /* partly-cloudy-day.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "partly-cloudy-day.json"; sourceTree = "<group>"; };
+		19FCC35B2C4675A400FF43F9 /* fog.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fog.json; sourceTree = "<group>"; };
+		19FCC35C2C4675A400FF43F9 /* dust.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dust.json; sourceTree = "<group>"; };
+		19FCC35D2C4675A400FF43F9 /* sunset.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sunset.json; sourceTree = "<group>"; };
+		19FCC35E2C4675A400FF43F9 /* thunderstorms-day.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "thunderstorms-day.json"; sourceTree = "<group>"; };
+		19FCC35F2C4675A400FF43F9 /* umbrella.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = umbrella.json; sourceTree = "<group>"; };
 		EB2653482C4602C1003B89D4 /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
 		EB26534B2C46098A003B89D4 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		EB26534D2C460996003B89D4 /* WeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewModel.swift; sourceTree = "<group>"; };
@@ -130,14 +141,25 @@
 		1953D2742C1B3FE100D979DE /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				19FCC35A2C4675A400FF43F9 /* partly-cloudy-day.json */,
 				EBDF7FD22C44FB3900C9BD4C /* snow.json */,
 				EBDF7FD02C44FB2C00C9BD4C /* partly-cloudy-day.json */,
 				EBDF7FC12C44C02B00C9BD4C /* dust.json */,
+				19FCC35C2C4675A400FF43F9 /* dust.json */,
 				EBDF7FB82C44C02B00C9BD4C /* fog.json */,
+				19FCC35B2C4675A400FF43F9 /* fog.json */,
 				EBDF7FBB2C44C02B00C9BD4C /* hail.json */,
 				EBDF7FBE2C44C02B00C9BD4C /* hurricane.json */,
 				EBDF7FB62C44C02B00C9BD4C /* thunderstorms-day.json */,
+				19FCC3572C4675A400FF43F9 /* hail.json */,
+				19FCC3582C4675A400FF43F9 /* hurricane.json */,
+				19FCC3592C4675A400FF43F9 /* snow.json */,
+				19FCC3562C4675A400FF43F9 /* sunrise.json */,
+				19FCC35D2C4675A400FF43F9 /* sunset.json */,
+				19FCC35E2C4675A400FF43F9 /* thunderstorms-day.json */,
+				19FCC35F2C4675A400FF43F9 /* umbrella.json */,
 				EBDF7FBF2C44C02B00C9BD4C /* wind.json */,
+				19FCC3552C4675A400FF43F9 /* wind.json */,
 				1933C2262C2DD80700EF5C29 /* Acme-Regular.ttf */,
 				1953D29F2C1CD10F00D979DE /* Info.plist */,
 				1953D28C2C1B891200D979DE /* clear-day.json */,
@@ -348,22 +370,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				1933C2272C2DD80700EF5C29 /* Acme-Regular.ttf in Resources */,
-				EBDF7FD12C44FB2C00C9BD4C /* partly-cloudy-day.json in Resources */,
+				19FCC3652C4675A400FF43F9 /* partly-cloudy-day.json in Resources */,
 				1953D28D2C1B891200D979DE /* clear-day.json in Resources */,
-				EBDF7FCA2C44C02C00C9BD4C /* hurricane.json in Resources */,
-				EBDF7FCB2C44C02C00C9BD4C /* wind.json in Resources */,
 				1953D2972C1B8D4A00D979DE /* cloudy.json in Resources */,
-				EBDF7FC92C44C02C00C9BD4C /* umbrella.json in Resources */,
 				1953D2992C1B8D4A00D979DE /* rain.json in Resources */,
-				EBDF7FC22C44C02C00C9BD4C /* thunderstorms-day.json in Resources */,
-				EBDF7FC42C44C02C00C9BD4C /* fog.json in Resources */,
-				EBDF7FCD2C44C02C00C9BD4C /* dust.json in Resources */,
-				EBDF7FD32C44FB3900C9BD4C /* snow.json in Resources */,
+				19FCC3612C4675A400FF43F9 /* sunrise.json in Resources */,
+				19FCC3642C4675A400FF43F9 /* snow.json in Resources */,
+				19FCC3632C4675A400FF43F9 /* hurricane.json in Resources */,
+				19FCC36A2C4675A400FF43F9 /* umbrella.json in Resources */,
+				19FCC3692C4675A400FF43F9 /* thunderstorms-day.json in Resources */,
+				19FCC3622C4675A400FF43F9 /* hail.json in Resources */,
 				1953D29B2C1B8D4A00D979DE /* drizzle.json in Resources */,
+				19FCC3672C4675A400FF43F9 /* dust.json in Resources */,
+				19FCC3602C4675A400FF43F9 /* wind.json in Resources */,
 				197F52C82C19B32800AB786C /* Assets.xcassets in Resources */,
-				EBDF7FCC2C44C02C00C9BD4C /* sunrise.json in Resources */,
-				EBDF7FC72C44C02C00C9BD4C /* hail.json in Resources */,
-				EBDF7FC32C44C02C00C9BD4C /* sunset.json in Resources */,
+				19FCC3662C4675A400FF43F9 /* fog.json in Resources */,
+				19FCC3682C4675A400FF43F9 /* sunset.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +553,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = rainChecker/Assets/rainChecker.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"rainChecker/Preview Content\"";
@@ -556,9 +579,14 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaebi.rainChecker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -569,6 +597,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = rainChecker/Assets/rainChecker.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"rainChecker/Preview Content\"";
@@ -594,9 +623,14 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaebi.rainChecker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
