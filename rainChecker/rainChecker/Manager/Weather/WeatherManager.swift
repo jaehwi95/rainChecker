@@ -77,4 +77,29 @@ final class WeatherManager {
             return .failure(error)
         }
     }
+    
+    func getWeatherAttribution() async -> Result<WeatherAttributionModel, Error> {
+        do {
+            let attribution = try await weatherService.attribution
+            let weatherAttributionModel: WeatherAttributionModel
+            if #available(iOS 16.4, *) {
+                weatherAttributionModel = WeatherAttributionModel(
+                    legalPageURL: attribution.legalPageURL,
+                    lightLogoTextURL: attribution.combinedMarkLightURL,
+                    darkLogoTextURL: attribution.combinedMarkDarkURL,
+                    legalAttributionText: attribution.legalAttributionText
+                )
+            } else {
+                weatherAttributionModel = WeatherAttributionModel(
+                    legalPageURL: attribution.legalPageURL,
+                    lightLogoTextURL: attribution.combinedMarkLightURL,
+                    darkLogoTextURL: attribution.combinedMarkDarkURL,
+                    legalAttributionText: ""
+                )
+            }
+            return .success(weatherAttributionModel)
+        } catch {
+            return .failure(error)
+        }
+    }
 }

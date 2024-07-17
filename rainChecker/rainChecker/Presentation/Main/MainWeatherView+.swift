@@ -87,7 +87,11 @@ extension MainWeatherView {
                         .font(.system(size: 14))
                 }
                 HStack {
-                    Image(systemName: "thermometer.variable.and.figure")
+                    if #available(iOS 17.0, *) {
+                        Image(systemName: "thermometer.variable.and.figure")
+                    } else {
+                        Image(systemName: "medical.thermometer")
+                    }
                     Text("\(feelsLikeTemperature)")
                         .font(.system(size: 14))
                 }

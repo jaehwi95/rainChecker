@@ -17,6 +17,7 @@ class MainWeatherViewModel: ObservableObject {
     private var task: Task<Void, Never>? = nil
     @Published var currentLocationString: String = ""
     
+    @Published var weatherAttributionModel: WeatherAttributionModel = .init()
     @Published var currentWeatherModel: CurrentWeatherModel = .init()
     @Published var hourlyForecastModels: [HourlyForecastModel] = []
     @Published var weeklyForecastModels: [WeeklyForecastModel] = []
@@ -132,6 +133,16 @@ extension MainWeatherViewModel {
 
 // Weather Logics
 extension MainWeatherViewModel {
+    func getWeatherAttribution() async {
+        let result = await WeatherManager.shared.getWeatherAttribution()
+        switch result {
+        case .success(let data):
+            weatherAttributionModel = data
+        case .failure(let failure):
+            print("Weather Attribution Error: \(failure)")
+        }
+    }
+    
     func getCurrentWeather(location: CLLocation) async {
         let result = await WeatherManager.shared.getCurrentWeather(location: currentLocation)
         switch result {

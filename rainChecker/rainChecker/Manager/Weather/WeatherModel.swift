@@ -134,3 +134,29 @@ struct WeeklyForecastModel: Hashable {
         self.symbolName = symbolName
     }
 }
+
+struct WeatherAttributionModel {
+    let legalPageURL: URL
+    let lightLogoTextURL: URL
+    let darkLogoTextURL: URL
+    let legalAttributionText: String
+    
+    init() {
+        self.legalPageURL = URL(string: "https://developer.apple.com/weatherkit/data-source-attribution/")!
+        self.lightLogoTextURL = URL(string: "https://weatherkit.apple.com/assets/branding/en/Apple_Weather_blk_en_3X_090122.png")!
+        self.darkLogoTextURL = URL(string: "https://weatherkit.apple.com/assets/branding/en/Apple_Weather_wht_en_3X_090122.png")!
+        self.legalAttributionText = ""
+    }
+    
+    init(
+        legalPageURL: URL,
+        lightLogoTextURL: URL,
+        darkLogoTextURL: URL,
+        legalAttributionText: String
+    ) {
+        self.legalPageURL = legalPageURL
+        self.lightLogoTextURL = lightLogoTextURL
+        self.darkLogoTextURL = darkLogoTextURL
+        self.legalAttributionText = legalAttributionText
+    }
+}
