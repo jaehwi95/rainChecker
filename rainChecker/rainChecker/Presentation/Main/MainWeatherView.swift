@@ -12,6 +12,7 @@ import Lottie
 struct MainWeatherView: View {
     @StateObject var viewModel: MainWeatherViewModel
     @EnvironmentObject var router: Router
+    @Environment(\.openURL) var openURL
     
     var body: some View {
         ZStack {
@@ -28,6 +29,7 @@ struct MainWeatherView: View {
                     TodayWeather
                     HourlyWeatherView
                     WeeklyWeatherView
+                    WeatherAttributionView
                 }
                 .padding(EdgeInsets(top: 20, leading: 20, bottom: 40, trailing: 20))
             }
@@ -41,31 +43,36 @@ struct MainWeatherView: View {
             }
         )
         .apply {
-                if #available(iOS 17.0, *) {
-                    $0.onChange(of: viewModel.authorizationStatus) { _, newValue in
-                        Task {
-                            await viewModel.getCurrentLocation()
-                            await withTaskGroup(of: Void.self) { group in
-                                group.addTask { await viewModel.getCurrentWeather(location: viewModel.currentLocation) }
-                                group.addTask { await viewModel.getTodayWeatherForecast(location: viewModel.currentLocation) }
-                                group.addTask { await viewModel.getWeekWeatherForecast(location: viewModel.currentLocation) }
-                                await group.waitForAll()
-                            }
-                        }
-                    }
-                } else {
-                    $0.onChange(of: viewModel.authorizationStatus) { value in
-                        Task {
-                            await viewModel.getCurrentLocation()
-                            await withTaskGroup(of: Void.self) { group in
-                                group.addTask { await viewModel.getCurrentWeather(location: viewModel.currentLocation) }
-                                group.addTask { await viewModel.getTodayWeatherForecast(location: viewModel.currentLocation) }
-                                group.addTask { await viewModel.getWeekWeatherForecast(location: viewModel.currentLocation) }
-                                await group.waitForAll()
-                            }
+            if #available(iOS 17.0, *) {
+                $0.onChange(of: viewModel.authorizationStatus) { _, newValue in
+                    Task {
+                        await viewModel.getCurrentLocation()
+                        await withTaskGroup(of: Void.self) { group in
+                            group.addTask { await viewModel.getCurrentWeather(location: viewModel.currentLocation) }
+                            group.addTask { await viewModel.getTodayWeatherForecast(location: viewModel.currentLocation) }
+                            group.addTask { await viewModel.getWeekWeatherForecast(location: viewModel.currentLocation) }
+                            await group.waitForAll()
                         }
                     }
                 }
+            } else {
+                $0.onChange(of: viewModel.authorizationStatus) { value in
+                    Task {
+                        await viewModel.getCurrentLocation()
+                        await withTaskGroup(of: Void.self) { group in
+                            group.addTask { await viewModel.getCurrentWeather(location: viewModel.currentLocation) }
+                            group.addTask { await viewModel.getTodayWeatherForecast(location: viewModel.currentLocation) }
+                            group.addTask { await viewModel.getWeekWeatherForecast(location: viewModel.currentLocation) }
+                            await group.waitForAll()
+                        }
+                    }
+                }
+            }
+        }
+        .onAppear {
+            Task {
+                await viewModel.getWeatherAttribution()
+            }
         }
     }
 }
@@ -184,6 +191,37 @@ extension MainWeatherView {
                 }
             }
         }
+    }
+    
+    private var WeatherAttributionView: some View {
+        VStack {
+            Text("Powered by")
+            AsyncImage(url: viewModel.weatherAttributionModel.lightLogoTextURL) { image in
+                image
+            } placeholder: {
+                ProgressView()
+            }
+            .padding(.horizontal, 40)
+            if viewModel.weatherAttributionModel.legalAttributionText.isEmpty {
+                Button("Show Legal Attribution") {
+                    openURL(viewModel.weatherAttributionModel.legalPageURL)
+                }
+            } else {
+                DisclosureGroup(
+                    content: {
+                        VStack {
+                            Text("\(viewModel.weatherAttributionModel.legalAttributionText)")
+                        }
+                    },
+                    label: {
+                        Text("Show Legal Attribution")
+                    }
+                )
+                .tint(.black)
+                .padding(.horizontal, 40)
+            }
+        }
+        .padding(.top, 40)
     }
 }
 
