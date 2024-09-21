@@ -95,18 +95,7 @@
 		EB2653482C4602C1003B89D4 /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
 		EB26534B2C46098A003B89D4 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		EB26534D2C460996003B89D4 /* WeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewModel.swift; sourceTree = "<group>"; };
-		EBDF7FB62C44C02B00C9BD4C /* thunderstorms-day.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "thunderstorms-day.json"; path = "../../../../../../Downloads/thunderstorms-day.json"; sourceTree = "<group>"; };
-		EBDF7FB72C44C02B00C9BD4C /* sunset.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = sunset.json; path = ../../../../../../Downloads/sunset.json; sourceTree = "<group>"; };
-		EBDF7FB82C44C02B00C9BD4C /* fog.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = fog.json; path = ../../../../../../Downloads/fog.json; sourceTree = "<group>"; };
-		EBDF7FBB2C44C02B00C9BD4C /* hail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = hail.json; path = ../../../../../../Downloads/hail.json; sourceTree = "<group>"; };
-		EBDF7FBD2C44C02B00C9BD4C /* umbrella.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = umbrella.json; path = ../../../../../../Downloads/umbrella.json; sourceTree = "<group>"; };
-		EBDF7FBE2C44C02B00C9BD4C /* hurricane.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = hurricane.json; path = ../../../../../../Downloads/hurricane.json; sourceTree = "<group>"; };
-		EBDF7FBF2C44C02B00C9BD4C /* wind.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = wind.json; path = ../../../../../../Downloads/wind.json; sourceTree = "<group>"; };
-		EBDF7FC02C44C02B00C9BD4C /* sunrise.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = sunrise.json; path = ../../../../../../Downloads/sunrise.json; sourceTree = "<group>"; };
-		EBDF7FC12C44C02B00C9BD4C /* dust.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = dust.json; path = ../../../../../../Downloads/dust.json; sourceTree = "<group>"; };
 		EBDF7FCE2C44F7A000C9BD4C /* WeatherCondition+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherCondition+.swift"; sourceTree = "<group>"; };
-		EBDF7FD02C44FB2C00C9BD4C /* partly-cloudy-day.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "partly-cloudy-day.json"; path = "../../../../../../Downloads/partly-cloudy-day.json"; sourceTree = "<group>"; };
-		EBDF7FD22C44FB3900C9BD4C /* snow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = snow.json; path = ../../../../../../Downloads/snow.json; sourceTree = "<group>"; };
 		EBDF7FD52C45010B00C9BD4C /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		EBDF7FD72C45101900C9BD4C /* MainWeatherView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainWeatherView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,15 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				19FCC35A2C4675A400FF43F9 /* partly-cloudy-day.json */,
-				EBDF7FD22C44FB3900C9BD4C /* snow.json */,
-				EBDF7FD02C44FB2C00C9BD4C /* partly-cloudy-day.json */,
-				EBDF7FC12C44C02B00C9BD4C /* dust.json */,
 				19FCC35C2C4675A400FF43F9 /* dust.json */,
-				EBDF7FB82C44C02B00C9BD4C /* fog.json */,
 				19FCC35B2C4675A400FF43F9 /* fog.json */,
-				EBDF7FBB2C44C02B00C9BD4C /* hail.json */,
-				EBDF7FBE2C44C02B00C9BD4C /* hurricane.json */,
-				EBDF7FB62C44C02B00C9BD4C /* thunderstorms-day.json */,
 				19FCC3572C4675A400FF43F9 /* hail.json */,
 				19FCC3582C4675A400FF43F9 /* hurricane.json */,
 				19FCC3592C4675A400FF43F9 /* snow.json */,
@@ -158,7 +140,6 @@
 				19FCC35D2C4675A400FF43F9 /* sunset.json */,
 				19FCC35E2C4675A400FF43F9 /* thunderstorms-day.json */,
 				19FCC35F2C4675A400FF43F9 /* umbrella.json */,
-				EBDF7FBF2C44C02B00C9BD4C /* wind.json */,
 				19FCC3552C4675A400FF43F9 /* wind.json */,
 				1933C2262C2DD80700EF5C29 /* Acme-Regular.ttf */,
 				1953D29F2C1CD10F00D979DE /* Info.plist */,
@@ -168,9 +149,6 @@
 				1953D2932C1B8D4A00D979DE /* rain.json */,
 				197F52D12C19B4A000AB786C /* rainChecker.entitlements */,
 				197F52C72C19B32800AB786C /* Assets.xcassets */,
-				EBDF7FC02C44C02B00C9BD4C /* sunrise.json */,
-				EBDF7FB72C44C02B00C9BD4C /* sunset.json */,
-				EBDF7FBD2C44C02B00C9BD4C /* umbrella.json */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
