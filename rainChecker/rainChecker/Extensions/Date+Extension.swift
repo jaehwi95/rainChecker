@@ -1,5 +1,5 @@
 //
-//  Date+.swift
+//  Date+Extension.swift
 //  rainChecker
 //
 //  Created by Jaehwi Kim on 6/30/24.

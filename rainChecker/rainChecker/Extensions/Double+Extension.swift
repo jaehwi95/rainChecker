@@ -1,5 +1,5 @@
 //
-//  Double+.swift
+//  Double+Extension.swift
 //  rainChecker
 //
 //  Created by Jaehwi Kim on 6/30/24.
@@ -18,7 +18,7 @@ extension Double {
         }
     }
     
-    func toPercentage() -> String? {
+    func toPercentage() -> String {
         let percentage = self
         let formatter = NumberFormatter()
         formatter.numberStyle = .percent
@@ -26,7 +26,7 @@ extension Double {
         if let formattedString = formatter.string(from: NSNumber(value: percentage)) {
             return formattedString
         } else {
-            return nil
+            return String(self)+"%"
         }
     }
     

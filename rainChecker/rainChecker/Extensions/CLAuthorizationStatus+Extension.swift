@@ -1,5 +1,5 @@
 //
-//  CLAuthorizationStatus.swift
+//  CLAuthorizationStatus+Extension.swift
 //  rainChecker
 //
 //  Created by Jaehwi Kim on 7/15/24.
