@@ -8,27 +8,29 @@
 import SwiftUI
 
 struct FlipCardView<FrontView: View, BackView: View>: View {
-    let frontView: FrontView
-    let backView: BackView
-    @Binding var isFlip: Bool
+    private let frontView: FrontView
+    private let backView: BackView
+    @Binding private var isFlip: Bool
+    private let cardSize: CGFloat
     
-    init(frontView: FrontView, backView: BackView, isFlip: Binding<Bool>) {
+    public init(frontView: FrontView, backView: BackView, isFlip: Binding<Bool>, cardSize: CGFloat = 100) {
         self.frontView = frontView
         self.backView = backView
         _isFlip = isFlip
+        self.cardSize = cardSize
     }
     
     var body: some View {
         ZStack() {
             frontView
-                .card()
+                .card(size: cardSize)
                 .modifier(FlipOpacity(percentage: isFlip ? 0 : 1))
                 .rotation3DEffect(
                     Angle.degrees(isFlip ? 180 : 360),
                     axis: (x: 0.0, y: 1.0, z: 0.0)
                 )
             backView
-                .card()
+                .card(size: cardSize)
                 .modifier(FlipOpacity(percentage: isFlip ? 1 : 0))
                 .rotation3DEffect(
                     Angle.degrees(isFlip ? 0 : 180),
@@ -58,9 +60,11 @@ private struct FlipOpacity: AnimatableModifier {
 }
 
 private struct CardModifier: ViewModifier {
+    let size: CGFloat
+    
     func body(content: Content) -> some View {
         content
-            .frame(width: 100, height: 100)
+            .frame(width: size, height: size)
             .background(RoundedRectangle(cornerRadius: 15).fill(.white.opacity(0.2)))
             .clipShape(RoundedRectangle(cornerRadius: 15))
             .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 1)
@@ -68,7 +72,16 @@ private struct CardModifier: ViewModifier {
 }
 
 private extension View {
-    func card() -> some View {
-        modifier(CardModifier())
+    func card(size: CGFloat) -> some View {
+        modifier(CardModifier(size: size))
     }
+}
+
+#Preview {
+    FlipCardView(
+        frontView: EmptyView(),
+        backView: EmptyView(),
+        isFlip: .constant(true),
+        cardSize: 100
+    )
 }

@@ -1,5 +1,5 @@
 //
-//  CLLocation+.swift
+//  CLLocation+Extension.swift
 //  rainChecker
 //
 //  Created by Jaehwi Kim on 6/13/24.

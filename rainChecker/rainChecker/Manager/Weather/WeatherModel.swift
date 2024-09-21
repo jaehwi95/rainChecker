@@ -73,7 +73,8 @@ struct TodayForecastModel {
     }
 }
 
-struct HourlyForecastModel: Hashable {
+struct HourlyForecastModel: Hashable, Identifiable {
+    let id: UUID = UUID()
     let feelsLikeTemperature: Double
     let actualTemperature: Double
     let humidity: Double

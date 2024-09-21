@@ -31,6 +31,7 @@ struct HomeView: View {
 //                .tag(2)
         }
         .onAppear {
+            /// By default, tabBar will have white background - customize tabBar to be blur-transparent for standard and scroll appearance
             if #available(iOS 15, *) {
                 let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
                 tabBarAppearance.configureWithTransparentBackground()
@@ -40,4 +41,8 @@ struct HomeView: View {
             }
         }
     }
+}
+
+#Preview {
+    HomeView(viewModel: .init())
 }
